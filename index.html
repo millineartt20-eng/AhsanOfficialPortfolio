@@ -1,0 +1,2415 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ahsan - Shopify Expert | Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            text-decoration: none;
+            border: none;
+            outline: none;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        html {
+            font-size: 62.5%;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            width: 100%;
+            min-height: 100vh;
+            overflow-x: hidden;
+            background-color: #0a0a0a;
+            color: white;
+        }
+
+        /* Page System */
+        .page {
+            display: none;
+            min-height: 100vh;
+            padding-top: 80px;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .page.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* WhatsApp Floating Button */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            background-color: #25D366;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 3rem;
+            color: white;
+            z-index: 1000;
+            box-shadow: 0 4px 20px rgba(37, 211, 102, 0.5);
+            transition: 0.3s ease;
+            animation: pulse 2s infinite;
+        }
+
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 30px rgba(37, 211, 102, 0.7);
+        }
+
+        @keyframes pulse {
+            0%, 100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.5); }
+            50% { box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); }
+        }
+
+        /* Header */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 1.5rem 9%;
+            background-color: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(10px);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+            border-bottom: 1px solid rgba(183, 75, 75, 0.2);
+        }
+
+        .logo {
+            font-size: 2.8rem;
+            color: #b74b4b;
+            font-weight: 800;
+            cursor: pointer;
+            transition: 0.5s ease;
+        }
+
+        .logo:hover {
+            transform: scale(1.05);
+            text-shadow: 0 0 20px rgba(183, 75, 75, 0.5);
+        }
+
+        nav {
+            display: flex;
+            align-items: center;
+        }
+
+        nav a {
+            font-size: 1.5rem;
+            color: white;
+            margin-left: 3rem;
+            font-weight: 500;
+            transition: 0.3s ease;
+            border-bottom: 3px solid transparent;
+            padding-bottom: 5px;
+            cursor: pointer;
+        }
+
+        nav a:hover,
+        nav a.active {
+            color: #b74b4b;
+            border-bottom: 3px solid #b74b4b;
+        }
+
+        .hamburger {
+            display: none;
+            font-size: 2.5rem;
+            color: #b74b4b;
+            cursor: pointer;
+        }
+
+        /* Mobile Menu */
+        .mobile-menu {
+            display: none;
+            position: fixed;
+            top: 70px;
+            left: 0;
+            width: 100%;
+            background: rgba(10, 10, 10, 0.98);
+            padding: 2rem;
+            flex-direction: column;
+            align-items: center;
+            gap: 2rem;
+            z-index: 99;
+            border-bottom: 1px solid rgba(183, 75, 75, 0.3);
+        }
+
+        .mobile-menu.active {
+            display: flex;
+        }
+
+        .mobile-menu a {
+            font-size: 1.8rem;
+            color: white;
+            transition: 0.3s ease;
+            cursor: pointer;
+        }
+
+        .mobile-menu a:hover,
+        .mobile-menu a.active {
+            color: #b74b4b;
+        }
+
+        /* Common Styles */
+        .section-title {
+            text-align: center;
+            padding: 5rem 0 4rem;
+        }
+
+        .section-title h2 {
+            font-size: 4.5rem;
+            font-weight: 700;
+            color: white;
+        }
+
+        .section-title h2 span {
+            color: #b74b4b;
+        }
+
+        .section-title p {
+            font-size: 1.6rem;
+            color: #aaa;
+            margin-top: 1rem;
+        }
+
+        .container {
+            padding: 0 9%;
+        }
+
+        span {
+            color: #b74b4b;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 1.2rem 3rem;
+            background-color: transparent;
+            border-radius: 4rem;
+            font-size: 1.6rem;
+            color: #b74b4b;
+            letter-spacing: 0.2rem;
+            font-weight: 600;
+            border: 2px solid #b74b4b;
+            transition: 0.3s ease;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background-color: #b74b4b;
+            color: white;
+            box-shadow: 0 0 25px rgba(183, 75, 75, 0.5);
+        }
+
+        .btn-filled {
+            background-color: #b74b4b;
+            color: white;
+        }
+
+        .btn-filled:hover {
+            background-color: transparent;
+            color: #b74b4b;
+        }
+
+        /* ==================== HOME PAGE ==================== */
+        .home {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: calc(100vh - 80px);
+            gap: 8rem;
+            padding: 5rem 9%;
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
+        }
+
+        .home-content h1 {
+            font-size: 5.5rem;
+            font-weight: 700;
+            line-height: 1.3;
+        }
+
+        .home-content h3 {
+            font-size: 3.2rem;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .home-content p {
+            font-size: 1.6rem;
+            line-height: 1.8;
+            color: #ccc;
+            max-width: 500px;
+        }
+
+        /* Media frames (supports Google Drive iframe embeds or images) */
+        .media-frame {
+            position: relative;
+            overflow: hidden;
+            background: #0a0a0a;
+            isolation: isolate;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            line-height: 0;
+        }
+
+        .media-embed {
+            /* Google Drive preview iframes often include internal padding/UI.
+               We oversize the iframe then scale it so the photo fills the frame.
+               Using absolute centering keeps the embed perfectly centered in circular/rounded frames. */
+            width: 200%;
+            height: 200%;
+            border: 0;
+            display: block;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(var(--embed-scale, 1));
+            transform-origin: center;
+            will-change: transform;
+            pointer-events: none;
+        }
+
+        /* Per-frame tuning (scale only — no shifting)
+           Tweaked for mobile so the photo fills the circle nicely without showing iframe edges. */
+        .media-frame--avatar { --embed-scale: 0.86; }
+
+        @media(max-width: 991px) {
+            .media-frame--avatar { --embed-scale: 0.82; }
+        }
+
+        @media(max-width: 480px) {
+            .media-frame--avatar { --embed-scale: 0.80; }
+        }
+
+        /* Home avatar */
+        .home-img .media-frame--avatar {
+            width: 30vw;
+            max-width: 350px;
+            aspect-ratio: 1 / 1;
+            border-radius: 50%;
+            box-shadow: 0 0 30px rgba(183, 75, 75, 0.4);
+            transition: 0.3s linear;
+            border: 5px solid #b74b4b;
+            /* ensures the iframe is clipped perfectly to the circle on all browsers */
+            -webkit-mask-image: -webkit-radial-gradient(white, black);
+            transform: translateZ(0);
+        }
+
+        /* Subtle inner border glow for a more premium avatar look */
+        .home-img .media-frame--avatar::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: 50%;
+            pointer-events: none;
+            box-shadow: inset 0 0 20px rgba(183, 75, 75, 0.15);
+        }
+
+        .home-img .media-frame--avatar:hover {
+            box-shadow: 0 0 50px rgba(183, 75, 75, 0.6);
+        }
+
+        /* If we ever switch back to <img>, keep it covered */
+        .media-frame img.media-embed {
+            object-fit: cover;
+            object-position: center top;
+        }
+
+        /* If the iframe still shows extra borders/UI, you can tweak the scale:
+           .media-frame--avatar { --embed-scale: 0.86; }
+        */
+
+
+        .social-icons a {
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            width: 4.5rem;
+            height: 4.5rem;
+            border: 0.2rem solid #b74b4b;
+            font-size: 2rem;
+            border-radius: 50%;
+            margin: 3rem 1.5rem 3rem 0;
+            transition: 0.3s ease;
+            color: #b74b4b;
+        }
+
+        .social-icons a:hover {
+            color: black;
+            transform: scale(1.2) translateY(-5px);
+            background-color: #b74b4b;
+            box-shadow: 0 0 25px #b74b4b;
+        }
+
+        .typing-text {
+            font-size: 3rem;
+            font-weight: 600;
+            min-width: 280px;
+        }
+
+        .typing-text span::before {
+            content: "Shopify Expert";
+            color: #b74b4b;
+            animation: words 12s infinite;
+        }
+
+        @keyframes words {
+            0%, 20% { content: "Shopify Expert"; }
+            21%, 40% { content: "Theme Developer"; }
+            41%, 60% { content: "SEO Specialist"; }
+            61%, 80% { content: "Dropshipping Pro"; }
+            81%, 100% { content: "Liquid Expert"; }
+        }
+
+        .home-buttons {
+            display: flex;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        /* ==================== TESTIMONIALS PAGE ==================== */
+        .testimonials-section {
+            padding: 0 9% 6rem;
+            background: radial-gradient(1200px 600px at 20% 0%, rgba(183, 75, 75, 0.18), transparent 55%),
+                        radial-gradient(900px 500px at 90% 20%, rgba(255, 107, 107, 0.10), transparent 55%);
+        }
+
+        .testimonials-wrap {
+            background: linear-gradient(145deg, rgba(26, 26, 26, 0.9), rgba(15, 15, 15, 0.9));
+            border: 1px solid rgba(183, 75, 75, 0.22);
+            border-radius: 22px;
+            padding: 2.5rem;
+            box-shadow: 0 15px 60px rgba(0, 0, 0, 0.35);
+        }
+
+        .testimonials-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 2rem;
+            flex-wrap: wrap;
+            margin-bottom: 2.2rem;
+        }
+
+        .trust-badges {
+            display: flex;
+            gap: 1.6rem;
+            flex-wrap: wrap;
+        }
+
+        .badge {
+            display: flex;
+            gap: 1.2rem;
+            align-items: center;
+            padding: 1.2rem 1.5rem;
+            border-radius: 14px;
+            border: 1px solid rgba(183, 75, 75, 0.18);
+            background: rgba(10, 10, 10, 0.45);
+        }
+
+        .badge i {
+            width: 42px;
+            height: 42px;
+            border-radius: 12px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(183, 75, 75, 0.14);
+            color: #b74b4b;
+            font-size: 1.9rem;
+        }
+
+        .badge strong {
+            display: block;
+            font-size: 1.4rem;
+            line-height: 1.1;
+        }
+
+        .badge span {
+            display: block;
+            font-size: 1.2rem;
+            color: #aaa;
+            margin-top: .2rem;
+        }
+
+        .testimonials-actions {
+            display: flex;
+            gap: 1.2rem;
+            flex-wrap: wrap;
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 2rem;
+        }
+
+        .testimonial-card {
+            position: relative;
+            overflow: hidden;
+            border-radius: 18px;
+            padding: 2.3rem;
+            border: 1px solid rgba(183, 75, 75, 0.18);
+            background: linear-gradient(145deg, #1a1a1a, #0f0f0f);
+            transition: 0.3s ease;
+        }
+
+        .testimonial-card::before {
+            content: '';
+            position: absolute;
+            inset: -2px;
+            background: radial-gradient(500px 120px at 10% 0%, rgba(183, 75, 75, 0.22), transparent 60%);
+            pointer-events: none;
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-8px);
+            border-color: rgba(183, 75, 75, 0.55);
+            box-shadow: 0 18px 45px rgba(183, 75, 75, 0.12);
+        }
+
+        .t-head {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+            margin-bottom: 1.2rem;
+        }
+
+        .t-person {
+            display: flex;
+            align-items: center;
+            gap: 1.2rem;
+            min-width: 0;
+        }
+
+        .t-avatar {
+            width: 44px;
+            height: 44px;
+            border-radius: 14px;
+            background: rgba(183, 75, 75, 0.16);
+            border: 1px solid rgba(183, 75, 75, 0.25);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            color: #ffb3b3;
+            font-weight: 700;
+            font-size: 1.6rem;
+            flex: 0 0 auto;
+        }
+
+        .t-name {
+            font-size: 1.5rem;
+            font-weight: 600;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .t-brand {
+            font-size: 1.2rem;
+            color: #aaa;
+            margin-top: .2rem;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .t-stars {
+            display: inline-flex;
+            align-items: center;
+            flex: 0 0 auto;
+            background: rgba(255, 204, 102, 0.08);
+            border: 1px solid rgba(255, 204, 102, 0.16);
+            padding: .55rem .85rem;
+            border-radius: 999px;
+            color: #ffcc66;
+            line-height: 1;
+            white-space: nowrap;
+        }
+
+        .t-stars .stars-icons {
+            display: inline-flex;
+            align-items: center;
+            gap: 2px;
+        }
+
+        .t-stars .stars-icons i {
+            font-size: 1.35rem;
+        }
+
+        .t-rating-num {
+            font-size: 1.15rem;
+            color: rgba(255, 255, 255, 0.85);
+            margin-left: .45rem;
+        }
+
+        .t-msg {
+            font-size: 1.4rem;
+            color: #cfcfcf;
+            line-height: 1.75;
+            margin-bottom: 1.3rem;
+        }
+
+        .t-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1rem;
+            color: #888;
+            font-size: 1.2rem;
+        }
+
+        .t-chip {
+            display: inline-flex;
+            align-items: center;
+            gap: .7rem;
+            padding: .6rem 1rem;
+            border-radius: 999px;
+            border: 1px solid rgba(183, 75, 75, 0.18);
+            background: rgba(183, 75, 75, 0.08);
+            color: #ffb3b3;
+        }
+
+        /* Modal */
+        .modal {
+            position: fixed;
+            inset: 0;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 2000;
+            padding: 2rem;
+        }
+
+        .modal.active {
+            display: flex;
+        }
+
+        .modal-backdrop {
+            position: absolute;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.72);
+            backdrop-filter: blur(6px);
+        }
+
+        .modal-card {
+            position: relative;
+            width: 100%;
+            max-width: 720px;
+            border-radius: 22px;
+            padding: 2.5rem;
+            border: 1px solid rgba(183, 75, 75, 0.22);
+            background: linear-gradient(145deg, #1a1a1a, #0f0f0f);
+            box-shadow: 0 20px 80px rgba(0, 0, 0, 0.5);
+            animation: fadeIn 0.25s ease;
+        }
+
+        .modal-head {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.6rem;
+        }
+
+        .modal-head h3 {
+            font-size: 2.4rem;
+        }
+
+        .icon-btn {
+            width: 44px;
+            height: 44px;
+            border-radius: 14px;
+            cursor: pointer;
+            color: white;
+            background: rgba(183, 75, 75, 0.12);
+            border: 1px solid rgba(183, 75, 75, 0.22);
+            transition: 0.2s ease;
+        }
+
+        .icon-btn:hover {
+            transform: translateY(-2px);
+            background: rgba(183, 75, 75, 0.2);
+        }
+
+        #testimonialForm label {
+            display: block;
+            margin-bottom: 1.2rem;
+        }
+
+        #testimonialForm label span {
+            display: block;
+            font-size: 1.3rem;
+            color: #aaa;
+            margin-bottom: .6rem;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.2rem;
+        }
+
+        #testimonialForm input,
+        #testimonialForm textarea,
+        #testimonialForm select {
+            width: 100%;
+            padding: 1.4rem 1.6rem;
+            background: #0a0a0a;
+            border: 1px solid rgba(183, 75, 75, 0.28);
+            border-radius: 12px;
+            font-size: 1.5rem;
+            color: white;
+            transition: 0.2s ease;
+        }
+
+        #testimonialForm textarea {
+            min-height: 130px;
+            resize: none;
+            line-height: 1.6;
+        }
+
+        #testimonialForm input:focus,
+        #testimonialForm textarea:focus,
+        #testimonialForm select:focus {
+            border-color: #b74b4b;
+            box-shadow: 0 0 0 4px rgba(183, 75, 75, 0.15);
+        }
+
+        .form-actions {
+            display: flex;
+            gap: 1.2rem;
+            flex-wrap: wrap;
+            margin-top: 1.5rem;
+        }
+
+        .form-note {
+            margin-top: 1.2rem;
+            font-size: 1.2rem;
+            color: #888;
+            line-height: 1.6;
+        }
+
+        /* Testimonials responsive */
+        @media(max-width: 991px) {
+            .testimonials-section { padding: 0 9% 5rem; }
+            .testimonials-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+        }
+
+        @media(max-width: 768px) {
+            .testimonials-section { padding: 0 5% 5rem; }
+            .testimonials-wrap { padding: 2rem; }
+            .testimonials-grid { grid-template-columns: 1fr; }
+            .form-row { grid-template-columns: 1fr; }
+        }
+
+        /* ==================== ABOUT PAGE ==================== */
+        .about-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 6rem;
+            padding: 0 9% 5rem;
+        }
+
+        /* About variant without image */
+        .about-container--noimage {
+            max-width: 980px;
+            margin: 0 auto;
+        }
+
+        .about-container--noimage .about-content {
+            max-width: 900px;
+            text-align: center;
+        }
+
+        .about-container--noimage .about-stats {
+            justify-content: center;
+        }
+
+        .about-img .media-frame--about {
+            width: 35vw;
+            max-width: 400px;
+            height: 520px;
+            border-radius: 20px;
+            box-shadow: 0 0 30px rgba(183, 75, 75, 0.3);
+            border: 3px solid rgba(183, 75, 75, 0.3);
+        }
+
+        .about-img .media-frame--about::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: 20px;
+            pointer-events: none;
+            background: linear-gradient(180deg, rgba(0,0,0,0.18), rgba(0,0,0,0.35));
+            opacity: 0.55;
+        }
+
+        .about-content {
+            max-width: 600px;
+        }
+
+        .about-content h3 {
+            font-size: 3rem;
+            margin-bottom: 2rem;
+        }
+
+        .about-content p {
+            font-size: 1.6rem;
+            line-height: 1.8;
+            color: #ccc;
+            margin-bottom: 2rem;
+        }
+
+        .about-stats {
+            display: flex;
+            gap: 4rem;
+            margin-top: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-item h4 {
+            font-size: 4rem;
+            color: #b74b4b;
+            font-weight: 700;
+        }
+
+        .stat-item p {
+            font-size: 1.4rem;
+            color: #aaa;
+        }
+
+        /* ==================== SERVICES PAGE ==================== */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 3rem;
+            padding: 0 9% 5rem;
+        }
+
+        .service-card {
+            background: linear-gradient(145deg, #1a1a1a, #0f0f0f);
+            padding: 4rem 3rem;
+            border-radius: 20px;
+            border: 1px solid rgba(183, 75, 75, 0.2);
+            transition: 0.3s ease;
+            text-align: center;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            border-color: #b74b4b;
+            box-shadow: 0 10px 40px rgba(183, 75, 75, 0.2);
+        }
+
+        .service-card i {
+            font-size: 5rem;
+            color: #b74b4b;
+            margin-bottom: 2rem;
+        }
+
+        .service-card h3 {
+            font-size: 2.2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .service-card p {
+            font-size: 1.5rem;
+            color: #aaa;
+            line-height: 1.7;
+        }
+
+        /* ==================== SKILLS PAGE ==================== */
+        .skills-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 3rem;
+            padding: 0 9% 5rem;
+        }
+
+        .skill-item {
+            background: linear-gradient(145deg, #1a1a1a, #0f0f0f);
+            padding: 2.5rem;
+            border-radius: 15px;
+            border: 1px solid rgba(183, 75, 75, 0.2);
+        }
+
+        .skill-item h4 {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .skill-item h4 span {
+            color: #b74b4b;
+        }
+
+        .progress-bar {
+            height: 10px;
+            background: #333;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .progress {
+            height: 100%;
+            background: linear-gradient(90deg, #b74b4b, #ff6b6b);
+            border-radius: 10px;
+            transition: width 1s ease;
+        }
+
+        /* ==================== PORTFOLIO PAGE ==================== */
+        .portfolio-filters {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            padding: 0 9% 4rem;
+        }
+
+        .filter-btn {
+            padding: 1rem 2.5rem;
+            background: transparent;
+            border: 2px solid #b74b4b;
+            color: #b74b4b;
+            font-size: 1.4rem;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: 0.3s ease;
+        }
+
+        .filter-btn:hover,
+        .filter-btn.active {
+            background: #b74b4b;
+            color: white;
+        }
+
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 3rem;
+            padding: 0 9% 5rem;
+        }
+
+        .portfolio-item {
+            background: linear-gradient(145deg, #1a1a1a, #0f0f0f);
+            border-radius: 20px;
+            overflow: hidden;
+            border: 1px solid rgba(183, 75, 75, 0.2);
+            transition: 0.3s ease;
+        }
+
+        .portfolio-item.hidden {
+            display: none;
+        }
+
+        .portfolio-item:hover {
+            transform: translateY(-10px);
+            border-color: #b74b4b;
+            box-shadow: 0 15px 40px rgba(183, 75, 75, 0.2);
+        }
+
+        .portfolio-img {
+            width: 100%;
+            height: 250px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .portfolio-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: 0.5s ease;
+        }
+
+        .portfolio-item:hover .portfolio-img img {
+            transform: scale(1.1);
+        }
+
+        .portfolio-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(183, 75, 75, 0.9);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transition: 0.3s ease;
+        }
+
+        .portfolio-item:hover .portfolio-overlay {
+            opacity: 1;
+        }
+
+        .portfolio-overlay a {
+            color: white;
+            font-size: 3rem;
+            margin: 0 1rem;
+            transition: 0.3s ease;
+        }
+
+        .portfolio-overlay a:hover {
+            transform: scale(1.2);
+        }
+
+        .portfolio-info {
+            padding: 2.5rem;
+        }
+
+        .portfolio-info .category {
+            font-size: 1.3rem;
+            color: #b74b4b;
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .portfolio-info h3 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .portfolio-info p {
+            font-size: 1.4rem;
+            color: #aaa;
+            margin-bottom: 1.5rem;
+        }
+
+        .portfolio-info .password {
+            font-size: 1.3rem;
+            color: #888;
+            background: rgba(183, 75, 75, 0.1);
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            display: inline-block;
+        }
+
+        /* ==================== EXPERIENCE PAGE ==================== */
+        .timeline {
+            position: relative;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 9% 5rem;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 3px;
+            height: calc(100% - 5rem);
+            background: #b74b4b;
+        }
+
+        .timeline-item {
+            padding: 2rem 4rem;
+            position: relative;
+            width: 50%;
+        }
+
+        .timeline-item:nth-child(odd) {
+            left: 0;
+            text-align: right;
+        }
+
+        .timeline-item:nth-child(even) {
+            left: 50%;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            top: 3rem;
+            width: 20px;
+            height: 20px;
+            background: #b74b4b;
+            border-radius: 50%;
+            border: 4px solid #0a0a0a;
+        }
+
+        .timeline-item:nth-child(odd)::before {
+            right: -10px;
+        }
+
+        .timeline-item:nth-child(even)::before {
+            left: -10px;
+        }
+
+        .timeline-content {
+            background: linear-gradient(145deg, #1a1a1a, #0f0f0f);
+            padding: 2.5rem;
+            border-radius: 15px;
+            border: 1px solid rgba(183, 75, 75, 0.2);
+        }
+
+        .timeline-content h3 {
+            font-size: 2rem;
+            color: #b74b4b;
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-content h4 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+        }
+
+        .timeline-content p {
+            font-size: 1.4rem;
+            color: #aaa;
+            line-height: 1.6;
+        }
+
+        /* ==================== CONTACT PAGE ==================== */
+        .contact-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 5rem;
+            padding: 0 9% 5rem;
+        }
+
+        .contact-info h3 {
+            font-size: 3rem;
+            margin-bottom: 2rem;
+        }
+
+        .contact-info > p {
+            font-size: 1.6rem;
+            color: #aaa;
+            margin-bottom: 3rem;
+            line-height: 1.8;
+        }
+
+        .contact-details {
+            margin-bottom: 3rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .contact-item i {
+            font-size: 2.5rem;
+            color: #b74b4b;
+            width: 50px;
+            height: 50px;
+            background: rgba(183, 75, 75, 0.1);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .contact-item div h4 {
+            font-size: 1.8rem;
+            margin-bottom: 0.3rem;
+        }
+
+        .contact-item div p {
+            font-size: 1.5rem;
+            color: #aaa;
+            margin: 0;
+        }
+
+        .contact-item div a {
+            color: #25D366;
+            font-size: 1.5rem;
+        }
+
+        .contact-form {
+            background: linear-gradient(145deg, #1a1a1a, #0f0f0f);
+            padding: 4rem;
+            border-radius: 20px;
+            border: 1px solid rgba(183, 75, 75, 0.2);
+        }
+
+        .contact-form h3 {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            padding: 1.5rem 2rem;
+            background: #0a0a0a;
+            border: 1px solid rgba(183, 75, 75, 0.3);
+            border-radius: 10px;
+            font-size: 1.6rem;
+            color: white;
+            margin-bottom: 2rem;
+            transition: 0.3s ease;
+        }
+
+        .contact-form input:focus,
+        .contact-form textarea:focus {
+            border-color: #b74b4b;
+        }
+
+        .contact-form textarea {
+            height: 150px;
+            resize: none;
+        }
+
+        .contact-form .btn {
+            width: 100%;
+        }
+
+        /* Footer */
+        footer {
+            background: #0a0a0a;
+            padding: 3rem 9%;
+            text-align: center;
+            border-top: 1px solid rgba(183, 75, 75, 0.2);
+        }
+
+        footer p {
+            font-size: 1.5rem;
+            color: #aaa;
+        }
+
+        footer a {
+            color: #b74b4b;
+        }
+
+        /* ==================== RESPONSIVE ==================== */
+        @media(max-width: 1200px) {
+            html { font-size: 55%; }
+        }
+
+        @media(max-width: 991px) {
+            .home { 
+                flex-direction: column; 
+                gap: 3rem;
+                padding: 3rem 9% 4rem;
+            }
+            .home-img { order: -1; }
+            .home-img .media-frame--avatar { width: 54vw; max-width: 320px; }
+            .home-content { text-align: center; }
+            .home-content p { margin: 0 auto; }
+            .home-buttons { justify-content: center; }
+            .about-container { flex-direction: column; }
+            .about-img .media-frame--about { width: 60vw; max-width: 350px; height: 420px; }
+            .about-content { text-align: center; }
+            .about-stats { justify-content: center; }
+            nav { display: none; }
+            .hamburger { display: block; }
+            .timeline::before { left: 20px; }
+            .timeline-item { 
+                width: 100%; 
+                left: 0 !important; 
+                padding-left: 5rem; 
+                text-align: left !important; 
+            }
+            .timeline-item::before { 
+                left: 10px !important; 
+                right: auto !important; 
+            }
+        }
+
+        @media(max-width: 768px) {
+            .section-title h2 { font-size: 3.5rem; }
+            .home-content h1 { font-size: 3.8rem; }
+            .home-content h3 { font-size: 2.4rem; }
+            .typing-text { font-size: 2.4rem; }
+            .home-content p { font-size: 1.55rem; }
+
+            .portfolio-grid { grid-template-columns: 1fr; }
+            .portfolio-filters { gap: 1rem; }
+            .filter-btn { padding: 0.8rem 1.5rem; font-size: 1.2rem; }
+            .services-grid { grid-template-columns: 1fr; }
+            .contact-container { grid-template-columns: 1fr; }
+            .contact-form { padding: 3rem 2rem; }
+        }
+
+        @media(max-width: 480px) {
+            .home-content h1 { font-size: 3.2rem; }
+            /* Mobile avatar sizing: slightly smaller so it doesn't dominate the screen */
+            .home-img .media-frame--avatar { width: min(72vw, 280px); }
+
+            .social-icons a { 
+                width: 4rem; 
+                height: 4rem; 
+                font-size: 1.8rem;
+                margin: 2rem 1rem 2rem 0;
+            }
+            .whatsapp-float { 
+                width: 50px; 
+                height: 50px; 
+                font-size: 2.5rem; 
+                bottom: 20px; 
+                right: 20px; 
+            }
+            .about-stats { gap: 2rem; }
+            .stat-item h4 { font-size: 3rem; }
+            header { padding: 1.5rem 5%; }
+            .container { padding: 0 5%; }
+            .portfolio-filters { padding: 0 5% 3rem; }
+            .portfolio-grid { padding: 0 5% 5rem; }
+            .services-grid { padding: 0 5% 5rem; }
+            .skills-container { padding: 0 5% 5rem; }
+            .about-container { padding: 0 5% 5rem; }
+            .contact-container { padding: 0 5% 5rem; }
+            .timeline { padding: 0 5% 5rem; }
+        }
+    </style>
+</head>
+<body>
+    <!-- WhatsApp Floating Button -->
+    <a href="https://wa.me/923090516362" target="_blank" class="whatsapp-float">
+        <i class="fa-brands fa-whatsapp"></i>
+    </a>
+
+    <!-- Header -->
+    <header>
+        <a class="logo" onclick="showPage('home')">Ahsan<span>.</span></a>
+        <nav>
+            <a onclick="showPage('home')" class="active" data-page="home">Home</a>
+            <a onclick="showPage('about')" data-page="about">About</a>
+            <a onclick="showPage('services')" data-page="services">Services</a>
+            <a onclick="showPage('skills')" data-page="skills">Skills</a>
+            <a onclick="showPage('portfolio')" data-page="portfolio">Portfolio</a>
+            <a onclick="showPage('testimonials')" data-page="testimonials">Testimonials</a>
+            <a onclick="showPage('experience')" data-page="experience">Experience</a>
+            <a onclick="showPage('contact')" data-page="contact">Contact</a>
+        </nav>
+        <div class="hamburger" onclick="toggleMenu()">
+            <i class="fas fa-bars"></i>
+        </div>
+    </header>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+        <a onclick="showPage('home'); toggleMenu();" data-page="home">Home</a>
+        <a onclick="showPage('about'); toggleMenu();" data-page="about">About</a>
+        <a onclick="showPage('services'); toggleMenu();" data-page="services">Services</a>
+        <a onclick="showPage('skills'); toggleMenu();" data-page="skills">Skills</a>
+        <a onclick="showPage('portfolio'); toggleMenu();" data-page="portfolio">Portfolio</a>
+        <a onclick="showPage('testimonials'); toggleMenu();" data-page="testimonials">Testimonials</a>
+        <a onclick="showPage('experience'); toggleMenu();" data-page="experience">Experience</a>
+        <a onclick="showPage('contact'); toggleMenu();" data-page="contact">Contact</a>
+    </div>
+
+    <!-- ==================== HOME PAGE ==================== -->
+    <div id="home" class="page active">
+        <section class="home">
+            <div class="home-img">
+                <div class="media-frame media-frame--avatar" aria-label="Ahsan - Shopify Expert">
+                    <iframe class="media-embed" src="https://drive.google.com/file/d/1cJXaJh2ge2CB2CWHw_qTvXC2jTBtHOHA/preview" title="Ahsan - Shopify Expert" loading="lazy" allow="autoplay"></iframe>
+                </div>
+            </div>
+            <div class="home-content">
+                <h1>Hi, I'm <span>Ahsan</span></h1>
+                <h3 class="typing-text">I'm a <span></span></h3>
+                <p>A Shopify Expert with over 4 years of hands-on experience in building high-converting Shopify stores. I help businesses launch, customize, and scale their online presence for long-term success.</p>
+                <div class="social-icons">
+                    <a href="https://www.linkedin.com" target="_blank" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+                    <a href="https://x.com" target="_blank" aria-label="Twitter / X"><i class="fa-brands fa-x-twitter"></i></a>
+                    <a href="https://www.facebook.com" target="_blank" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="https://www.instagram.com" target="_blank" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                </div>
+                <div class="home-buttons">
+                    <a onclick="showPage('contact')" class="btn">Hire Me</a>
+                    <a onclick="showPage('portfolio')" class="btn btn-filled">View Portfolio</a>
+                    <a onclick="showPage('testimonials')" class="btn">Testimonials</a>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <!-- ==================== TESTIMONIALS PAGE ==================== -->
+    <div id="testimonials" class="page">
+        <section class="testimonials-section" aria-label="Testimonials">
+            <div class="section-title" style="padding-top: 2rem;">
+                <h2>Client <span>Testimonials</span></h2>
+                <p>Real feedback from brands I’ve helped grow on Shopify</p>
+            </div>
+
+            <div class="testimonials-wrap">
+                <div class="testimonials-header">
+                    <div class="trust-badges">
+                        <div class="badge">
+                            <i class="fas fa-star"></i>
+                            <div>
+                                <strong>5-Star</strong>
+                                <span>Client Satisfaction</span>
+                            </div>
+                        </div>
+                        <div class="badge">
+                            <i class="fas fa-bolt"></i>
+                            <div>
+                                <strong>Fast Delivery</strong>
+                                <span>Clean & optimized builds</span>
+                            </div>
+                        </div>
+                        <div class="badge">
+                            <i class="fas fa-chart-line"></i>
+                            <div>
+                                <strong>Conversion Focus</strong>
+                                <span>Designed to sell</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="testimonials-actions">
+                        <button class="btn" id="openTestimonialModalBtn" type="button">
+                            <i class="fas fa-pen" style="margin-right: .8rem;"></i>
+                            Add Your Review
+                        </button>
+                        <button class="btn btn-filled" id="clearMyTestimonialsBtn" type="button" title="Clears only testimonials added from this browser">
+                            <i class="fas fa-rotate-left" style="margin-right: .8rem;"></i>
+                            Reset My Reviews
+                        </button>
+                    </div>
+                </div>
+
+                <div class="testimonials-grid" id="testimonialsGrid" aria-live="polite"></div>
+            </div>
+
+            <!-- Testimonial Modal -->
+            <div class="modal" id="testimonialModal" aria-hidden="true" role="dialog" aria-label="Add testimonial">
+                <div class="modal-backdrop" data-close="true"></div>
+                <div class="modal-card">
+                    <div class="modal-head">
+                        <h3>Leave a <span>Testimonial</span></h3>
+                        <button class="icon-btn" id="closeTestimonialModalBtn" type="button" aria-label="Close modal">
+                            <i class="fas fa-xmark"></i>
+                        </button>
+                    </div>
+                    <form id="testimonialForm">
+                        <div class="form-row">
+                            <label>
+                                <span>Your Name</span>
+                                <input type="text" name="name" placeholder="e.g., Sarah Khan" required maxlength="40">
+                            </label>
+                            <label>
+                                <span>Business / Brand</span>
+                                <input type="text" name="brand" placeholder="e.g., Fashion Boutique" required maxlength="40">
+                            </label>
+                        </div>
+
+                        <label>
+                            <span>Rating</span>
+                            <select name="rating" required>
+                                <option value="5" selected>5.0 (★★★★★)</option>
+                                <option value="4.5">4.5 (★★★★½)</option>
+                                <option value="4">4.0 (★★★★☆)</option>
+                                <option value="3.5">3.5 (★★★½☆)</option>
+                                <option value="3">3.0 (★★★☆☆)</option>
+                                <option value="2.5">2.5 (★★½☆☆)</option>
+                                <option value="2">2.0 (★★☆☆☆)</option>
+                                <option value="1.5">1.5 (★½☆☆☆)</option>
+                                <option value="1">1.0 (★☆☆☆☆)</option>
+                            </select>
+                        </label>
+
+                        <label>
+                            <span>Your Review</span>
+                            <textarea name="message" placeholder="Share your experience working with Ahsan..." required maxlength="300"></textarea>
+                        </label>
+
+                        <div class="form-actions">
+                            <button type="submit" class="btn btn-filled">
+                                <i class="fas fa-paper-plane" style="margin-right: .8rem;"></i>
+                                Publish Review
+                            </button>
+                            <button type="button" class="btn" id="cancelTestimonialBtn">Cancel</button>
+                        </div>
+                        <p class="form-note">Note: Reviews you add are saved on your device (browser) only.</p>
+                    </form>
+                </div>
+            </div>
+        </section>
+        <footer>
+            <p>&copy; 2026 <a onclick="showPage('home')" style="cursor:pointer;">Ahsan</a>. All Rights Reserved. | Shopify Expert from Lahore, Pakistan</p>
+        </footer>
+    </div>
+
+    <!-- ==================== ABOUT PAGE ==================== -->
+    <div id="about" class="page">
+        <div class="section-title">
+            <h2>About <span>Me</span></h2>
+            <p>Get to know more about my expertise and journey</p>
+        </div>
+        <div class="about-container about-container--noimage">
+            <div class="about-content">
+                <h3>Shopify Expert & <span>Theme Developer</span></h3>
+                <p>I specialize in creating clean, fast, and fully responsive Shopify themes that deliver an excellent user experience on all devices. Along with design and development, I'm also a Shopify SEO expert, helping stores rank better, load faster, and convert more visitors into customers.</p>
+                <p>I have strong technical skills in Shopify Liquid, HTML, CSS, and custom theme development. Over the years, I've helped thousands of people successfully launch, customize, and scale their Shopify stores.</p>
+                <p>In addition, I support dropshipping businesses by helping them find winning products, optimize product pages, and build stores that are designed for growth and long-term success.</p>
+                <div class="about-stats">
+                    <div class="stat-item">
+                        <h4>4+</h4>
+                        <p>Years Experience</p>
+                    </div>
+                    <div class="stat-item">
+                        <h4>1000+</h4>
+                        <p>Projects Completed</p>
+                    </div>
+                    <div class="stat-item">
+                        <h4>500+</h4>
+                        <p>Happy Clients</p>
+                    </div>
+                </div>
+                <a onclick="showPage('contact')" class="btn" style="margin-top: 3rem;">Let's Talk</a>
+            </div>
+        </div>
+        <footer>
+            <p>&copy; 2026 <a onclick="showPage('home')" style="cursor:pointer;">Ahsan</a>. All Rights Reserved. | Shopify Expert from Lahore, Pakistan</p>
+        </footer>
+    </div>
+
+    <!-- ==================== SERVICES PAGE ==================== -->
+    <div id="services" class="page">
+        <div class="section-title">
+            <h2>My <span>Services</span></h2>
+            <p>Professional Shopify solutions for your business growth</p>
+        </div>
+        <div class="services-grid">
+            <div class="service-card">
+                <i class="fas fa-store"></i>
+                <h3>Shopify Store Setup</h3>
+                <p>Complete Shopify store setup from scratch with professional design, product uploads, and conversion-ready settings for a successful launch.</p>
+            </div>
+            <div class="service-card">
+                <i class="fas fa-palette"></i>
+                <h3>Custom Theme Development</h3>
+                <p>Unique, custom-coded Shopify themes using Liquid, HTML, and CSS that perfectly match your brand identity and business needs.</p>
+            </div>
+            <div class="service-card">
+                <i class="fas fa-search"></i>
+                <h3>Shopify SEO</h3>
+                <p>Advanced SEO optimization to improve your store's visibility, drive organic traffic, and increase conversions with proven strategies.</p>
+            </div>
+            <div class="service-card">
+                <i class="fas fa-mobile-alt"></i>
+                <h3>Responsive Design</h3>
+                <p>Mobile-first responsive designs that look stunning and perform flawlessly on all devices and screen sizes.</p>
+            </div>
+            <div class="service-card">
+                <i class="fas fa-rocket"></i>
+                <h3>Speed Optimization</h3>
+                <p>Performance optimization to ensure your store loads lightning-fast and provides the best user experience possible.</p>
+            </div>
+            <div class="service-card">
+                <i class="fas fa-shipping-fast"></i>
+                <h3>Dropshipping Setup</h3>
+                <p>Complete dropshipping store setup with winning products, optimized product pages, and growth strategies for success.</p>
+            </div>
+            <div class="service-card">
+                <i class="fas fa-code"></i>
+                <h3>Liquid Development</h3>
+                <p>Expert Shopify Liquid programming for custom functionality, dynamic content, and advanced theme customizations.</p>
+            </div>
+        </div>
+        <footer>
+            <p>&copy; 2026 <a onclick="showPage('home')" style="cursor:pointer;">Ahsan</a>. All Rights Reserved. | Shopify Expert from Lahore, Pakistan</p>
+        </footer>
+    </div>
+
+    <!-- ==================== SKILLS PAGE ==================== -->
+    <div id="skills" class="page">
+        <div class="section-title">
+            <h2>My <span>Skills</span></h2>
+            <p>Technical expertise that powers your success</p>
+        </div>
+        <div class="skills-container">
+            <div class="skill-item">
+                <h4>Shopify Liquid <span>95%</span></h4>
+                <div class="progress-bar">
+                    <div class="progress" style="width: 95%;"></div>
+                </div>
+            </div>
+            <div class="skill-item">
+                <h4>HTML/CSS <span>95%</span></h4>
+                <div class="progress-bar">
+                    <div class="progress" style="width: 95%;"></div>
+                </div>
+            </div>
+            <div class="skill-item">
+                <h4>JavaScript <span>80%</span></h4>
+                <div class="progress-bar">
+                    <div class="progress" style="width: 80%;"></div>
+                </div>
+            </div>
+            <div class="skill-item">
+                <h4>Shopify SEO <span>90%</span></h4>
+                <div class="progress-bar">
+                    <div class="progress" style="width: 90%;"></div>
+                </div>
+            </div>
+            <div class="skill-item">
+                <h4>Theme Customization <span>95%</span></h4>
+                <div class="progress-bar">
+                    <div class="progress" style="width: 95%;"></div>
+                </div>
+            </div>
+            <div class="skill-item">
+                <h4>Dropshipping <span>85%</span></h4>
+                <div class="progress-bar">
+                    <div class="progress" style="width: 85%;"></div>
+                </div>
+            </div>
+            <div class="skill-item">
+                <h4>Conversion Optimization <span>90%</span></h4>
+                <div class="progress-bar">
+                    <div class="progress" style="width: 90%;"></div>
+                </div>
+            </div>
+            <div class="skill-item">
+                <h4>Product Research <span>88%</span></h4>
+                <div class="progress-bar">
+                    <div class="progress" style="width: 88%;"></div>
+                </div>
+            </div>
+        </div>
+        <footer>
+            <p>&copy; 2026 <a onclick="showPage('home')" style="cursor:pointer;">Ahsan</a>. All Rights Reserved. | Shopify Expert from Lahore, Pakistan</p>
+        </footer>
+    </div>
+
+    <!-- ==================== PORTFOLIO PAGE ==================== -->
+    <div id="portfolio" class="page">
+        <div class="section-title">
+            <h2>My <span>Portfolio</span></h2>
+            <p>Explore my recent Shopify store projects</p>
+        </div>
+        <div class="portfolio-filters">
+            <button class="filter-btn active" data-filter="all">All</button>
+            <button class="filter-btn" data-filter="jewelry">Jewelry & Accessories</button>
+            <button class="filter-btn" data-filter="fashion">Clothing & Fashion</button>
+            <button class="filter-btn" data-filter="shoes">Shoes & Slippers</button>
+            <button class="filter-btn" data-filter="bags">Bags & Backpacks</button>
+            <button class="filter-btn" data-filter="tech">Tech & Gadgets</button>
+            <button class="filter-btn" data-filter="multi">Multi Product Store</button>
+            <button class="filter-btn" data-filter="perfume">Fashion & Fragrances</button>
+            <button class="filter-btn" data-filter="pets">Pets</button>
+        </div>
+        <div class="portfolio-grid" id="portfolioGrid">
+            <!-- Jewelry & Accessories -->
+            <div class="portfolio-item" data-category="jewelry">
+                <div class="portfolio-img">
+                    <img src="https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=600&h=400&fit=crop" alt="Diamond Store">
+                    <div class="portfolio-overlay">
+                        <a href="https://diamon-store-demo.myshopify.com/password" target="_blank"><i class="fas fa-external-link-alt"></i></a>
+                    </div>
+                </div>
+                <div class="portfolio-info">
+                    <p class="category">Jewelry & Accessories</p>
+                    <h3>Diamond Store Demo</h3>
+                    <p>Elegant diamond jewelry store with premium design</p>
+                    <span class="password"><i class="fas fa-lock"></i> Password: 1</span>
+                </div>
+            </div>
+
+            <div class="portfolio-item" data-category="jewelry">
+                <div class="portfolio-img">
+                    <img src="https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?w=600&h=400&fit=crop" alt="Aolie Store">
+                    <div class="portfolio-overlay">
+                        <a href="https://qx-aolie.myshopify.com/password" target="_blank"><i class="fas fa-external-link-alt"></i></a>
+                    </div>
+                </div>
+                <div class="portfolio-info">
+                    <p class="category">Jewelry & Accessories</p>
+                    <h3>Aolie Jewelry</h3>
+                    <p>Modern jewelry collection with clean aesthetics</p>
+                    <span class="password"><i class="fas fa-lock"></i> Password: aolie</span>
+                </div>
+            </div>
+
+            <div class="portfolio-item" data-category="jewelry">
+                <div class="portfolio-img">
+                    <img src="https://images.unsplash.com/photo-1611652022419-a9419f74343d?w=600&h=400&fit=crop" alt="Emax Store">
+                    <div class="portfolio-overlay">
+                        <a href="https://emax-demo.myshopify.com/" target="_blank"><i class="fas fa-external-link-alt"></i></a>
+                    </div>
+                </div>
+                <div class="portfolio-info">
+                    <p class="category">Jewelry & Accessories</p>
+                    <h3>Emax Demo</h3>
+                    <p>Sophisticated jewelry store design</p>
+                    <span class="password"><i class="fas fa-unlock"></i> No Password</span>
+                </div>
+            </div>
+
+            <div class="portfolio-item" data-category="jewelry">
+                <div class="portfolio-img">
+                    <img src="https://images.unsplash.com/photo-1573408301185-9146fe634ad0?w=600&h=400&fit=crop" alt="Lopez Store">
+                    <div class="portfolio-overlay">
+                        <a href="https://demo-lopez.myshopify.com/" target="_blank"><i class="fas fa-external-link-alt"></i></a>
+                    </div>
+                </div>
+                <div class="portfolio-info">
+                    <p class="category">Jewelry & Accessories</p>
+                    <h3>Lopez Jewelry</h3>
+                    <p>Premium jewelry brand store</p>
+                    <span class="password"><i class="fas fa-unlock"></i> No Password</span>
+                </div>
+            </div>
+
+            <div class="portfolio-item" data-category="jewelry">
+                <div class="portfolio-img">
+                    <img src="https://images.unsplash.com/photo-1602173574767-37ac01994b2a?w=600&h=400&fit=crop" alt="Jew Theme">
+                    <div class="portfolio-overlay">
+                        <a href="https://jew-theme.myshopify.com/password" target="_blank"><i class="fas fa-external-link-alt"></i></a>
+                    </div>
+                </div>
+                <div class="portfolio-info">
+                    <p class="category">Jewelry & Accessories</p>
+                    <h3>Jew Theme</h3>
+                    <p>Luxury jewelry theme design</p>
+                    <span class="password"><i class="fas fa-lock"></i> Password: buddha</span>
+                </div>
+            </div>
+
+            <!-- Clothing & Fashion -->
+            <div class="portfolio-item" data-category="fashion">
+                <div class="portfolio-img">
+                    <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&h=400&fit=crop" alt="Rosyz Store">
+                    <div class="portfolio-overlay">
+                        <a href="https://qx-rosyz.myshopify.com/password" target="_blank"><i class="fas fa-external-link-alt"></i></a>
+                    </div>
+                </div>
+                <div class="portfolio-info">
+                    <p class="category">Clothing & Fashion</p>
+                    <h3>Rosyz Fashion</h3>
+                    <p>Trendy fashion store with modern layout</p>
+                    <span class="password"><i class="fas fa-lock"></i> Password: 1</span>
+                </div>
+            </div>
+
+            <div class="portfolio-item" data-category="fashion">
+                <div class="portfolio-img">
+                    <img src="https://images.unsplash.com/photo-1445205170230-053b83016050?w=600&h=400&fit=crop" alt="Dressfie Store">
+                    <div class="portfolio-overlay">
+                        <a href="https://dt-dressfie.myshopify.com/password" target="_blank"><i class="fas fa-external-link-alt"></i></a>
+                    </div>
+                </div>
+                <div class="portfolio-info">
+                    <p class="category">Clothing & Fashion</p>
+                    <h3>Dressfie</h3>
+                    <p>Elegant dress collection store</p>
+                    <span class="password"><i class="fas fa-lock"></i> Password: 1</span>
+                </div>
+            </div>
+
+            <div class="portfolio-item" data-category="fashion">
+                <div class="portfolio-img">
+                    <img src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=600&h=400&fit=crop" alt="Coutq Theme">
+                    <div class="portfolio-overlay">
+                        <a href="https://coutq-theme.myshopify.com/password" target="_blank"><i class="fas fa-external-link-alt"></i></a>
+                    </div>
+                </div>
+                <div class="portfolio-info">
+                    <p class="category">Clothing & Fashion</p>
+                    <h3>Coutq Theme</h3>
+                    <p>High-end fashion boutique theme</p>
+                    <span class="password"><i class="fas fa-lock"></i> Password: 1</span>
+                </div>
+            </div>
+
+            <div class="portfolio-item" data-category="fashion">
+                <div class="portfolio-img">
+                    <img src="https://images.unsplash.com/photo-1469334031218-e382a71b716b?w=600&h=400&fit=crop" alt="Aaraa Store">
+                    <div class="portfolio-overlay">
+                        <a href="https://dt-aaraa.myshopify.com/password" target="_blank"><i class="fas fa-external-link-alt"></i></a>
+                    </div>
+                </div>
+                <div class="portfolio-info">
+                    <p class="category">Clothing & Fashion</p>
+                    <h3>Aaraa Fashion</h3>
+                    <p>Contemporary fashion collection</p>
+                    <span class="password"><i class="fas fa-lock"></i> Password: buddha / 1</span>
+                </div>
+            </div>
+
+            <!-- Shoes & Slippers -->
+            <div class="portfolio-item" data-category="shoes">
+                <div class="portfolio-img">
+                    <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=600&h=400&fit=crop" alt="Zudan Store">
+                    <div class="portfolio-overlay">
+                        <a href="https://zudan-store-demo.myshopify.com/password" target="_blank"><i class="fas fa-external-link-alt"></i></a>
+                    </div>
+                </div>
+                <div class="portfolio-info">
+                    <p class="category">Shoes & Slippers</p>
+                    <h3>Zudan Store</h3>
+                    <p>Premium footwear collection</p>
+                    <span class="password"><i class="fas fa-lock"></i> Password: 1</span>
+                </div>
+            </div>
+
+            <div class="portfolio-item" data-category="shoes">
+                <div class="portfolio-img">
+                    <img src="https://images.unsplash.com/photo-1460353581641-37baddab0fa2?w=600&h=400&fit=crop" alt="Footzone Store">
+                    <div class="portfolio-overlay">
+                        <a href="https://dt-footzone.myshopify.com/password" target="_blank"><i class="fas fa-external-link-alt"></i></a>
+                    </div>
+                </div>
+                <div class="portfolio-info">
+                    <p class="category">Shoes & Slippers</p>
+                    <h3>Footzone</h3>
+                    <p>Sports and casual footwear store</p>
+                    <span class="password"><i class="fas fa-lock"></i> Password: 1</span>
+                </div>
+            </div>
+
+            <div class="portfolio-item" data-category="shoes">
+                <div class="portfolio-img">
+                    <img src="https://images.unsplash.com/photo-1549298916-b41d501d3772?w=600&h=400&fit=crop" alt="Shoesf Store">
+                    <div class="portfolio-overlay">
+                        <a href="https://shoesf-store-demo.myshopify.com/password" target="_blank"><i class="fas fa-external-link-alt"></i></a>
+                    </div>
+                </div>
+                <div class="portfolio-info">
+                    <p class="category">Shoes & Slippers</p>
+                    <h3>Shoesf Store</h3>
+                    <p>Modern shoe store design</p>
+                    <span class="password"><i class="fas fa-lock"></i> Password: 1</span>
+                </div>
+            </div>
+
+            <div class="portfolio-item" data-category="shoes">
+                <div class="portfolio-img">
+                    <img src="https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?w=600&h=400&fit=crop" alt="Virtu Store">
+                    <div class="portfolio-overlay">
+                        <a href="https://virtu-01.myshopify.com/" target="_blank"><i class="fas fa-external-link-alt"></i></a>
+                    </div>
+                </div>
+                <div class="portfolio-info">
+                    <p class="category">Shoes & Slippers</p>
+                    <h3>Virtu Shoes</h3>
+                    <p>Stylish footwear collection</p>
+                    <span class="password"><i class="fas fa-unlock"></i> No Password</span>
+                </div>
+            </div>
+
+            <!-- Bags & Backpacks -->
+            <div class="portfolio-item" data-category="bags">
+                <div class="portfolio-img">
+                    <img src="https://images.unsplash.com/photo-1548036328-c9fa89d128fa?w=600&h=400&fit=crop" alt="Mikadu Store">
+                    <div class="portfolio-overlay">
+                        <a href="https://mikadu-store-demo.myshopify.com/password" target="_blank"><i class="fas fa-external-link-alt"></i></a>
+                    </div>
+                </div>
+                <div class="portfolio-info">
+                    <p class="category">Bags & Backpacks</p>
+                    <h3>Mikadu Store</h3>
+                    <p>Premium bags and accessories</p>
+                    <span class="password"><i class="fas fa-lock"></i> Password: 1</span>
+                </div>
+            </div>
+
+            <div class="portfolio-item" data-category="bags">
+                <div class="portfolio-img">
+                    <img src="https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=600&h=400&fit=crop" alt="Moteca Store">
+                    <div class="portfolio-overlay">
+                        <a href="https://moteca-store-demo.myshopify.com/" target="_blank"><i class="fas fa-external-link-alt"></i></a>
+                    </div>
+                </div>
+                <div class="portfolio-info">
+                    <p class="category">Bags & Backpacks</p>
+                    <h3>Moteca Store</h3>
+                    <p>Stylish bag collection store</p>
+                    <span class="password"><i class="fas fa-lock"></i> Password: 1</span>
+                </div>
+            </div>
+
+            <!-- Tech & Gadgets -->
+            <div class="portfolio-item" data-category="tech">
+                <div class="portfolio-img">
+                    <img src="https://images.unsplash.com/photo-1468495244123-6c6c332eeece?w=600&h=400&fit=crop" alt="DSTA Demo">
+                    <div class="portfolio-overlay">
+                        <a href="https://dsta-demo.myshopify.com/" target="_blank"><i class="fas fa-external-link-alt"></i></a>
+                    </div>
+                </div>
+                <div class="portfolio-info">
+                    <p class="category">Tech & Gadgets</p>
+                    <h3>DSTA Demo</h3>
+                    <p>Modern tech gadgets store</p>
+                    <span class="password"><i class="fas fa-unlock"></i> No Password</span>
+                </div>
+            </div>
+
+            <div class="portfolio-item" data-category="tech">
+                <div class="portfolio-img">
+                    <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=600&h=400&fit=crop" alt="Belliza Demo">
+                    <div class="portfolio-overlay">
+                        <a href="https://belliza-demo.myshopify.com/password" target="_blank"><i class="fas fa-external-link-alt"></i></a>
+                    </div>
+                </div>
+                <div class="portfolio-info">
+                    <p class="category">Tech & Gadgets</p>
+                    <h3>Belliza Demo</h3>
+                    <p>Electronics and gadgets store</p>
+                    <span class="password"><i class="fas fa-lock"></i> Password: 1</span>
+                </div>
+            </div>
+
+            <!-- Multiple Product Store -->
+            <div class="portfolio-item" data-category="multi">
+                <div class="portfolio-img">
+                    <img src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=600&h=400&fit=crop" alt="Flashmart">
+                    <div class="portfolio-overlay">
+                        <a href="https://rt-flashmart.myshopify.com/password" target="_blank"><i class="fas fa-external-link-alt"></i></a>
+                    </div>
+                </div>
+                <div class="portfolio-info">
+                    <p class="category">Multi Product Store</p>
+                    <h3>Flashmart</h3>
+                    <p>Complete multi-category marketplace</p>
+                    <span class="password"><i class="fas fa-lock"></i> Password: 1</span>
+                </div>
+            </div>
+
+            <div class="portfolio-item" data-category="multi">
+                <div class="portfolio-img">
+                    <img src="https://images.unsplash.com/photo-1472851294608-062f824d29cc?w=600&h=400&fit=crop" alt="Elf Mart">
+                    <div class="portfolio-overlay">
+                        <a href="https://elf-mart.myshopify.com/" target="_blank"><i class="fas fa-external-link-alt"></i></a>
+                    </div>
+                </div>
+                <div class="portfolio-info">
+                    <p class="category">Multi Product Store</p>
+                    <h3>Elf Mart</h3>
+                    <p>All-in-one online marketplace</p>
+                    <span class="password"><i class="fas fa-lock"></i> Password: buddha</span>
+                </div>
+            </div>
+
+            <!-- Fashion & Fragrances -->
+            <div class="portfolio-item" data-category="perfume">
+                <div class="portfolio-img">
+                    <img src="https://images.unsplash.com/photo-1541643600914-78b084683601?w=600&h=400&fit=crop" alt="Fashion Store">
+                    <div class="portfolio-overlay">
+                        <a href="https://aezy5f-1y.myshopify.com/?pb=0" target="_blank"><i class="fas fa-external-link-alt"></i></a>
+                    </div>
+                </div>
+                <div class="portfolio-info">
+                    <p class="category">Fashion & Fragrances</p>
+                    <h3>Fashion Collection</h3>
+                    <p>T-Shirts, Glasses & Fragrances</p>
+                    <span class="password"><i class="fas fa-lock"></i> Password: 1</span>
+                </div>
+            </div>
+
+            <!-- Pets -->
+            <div class="portfolio-item" data-category="pets">
+                <div class="portfolio-img">
+                    <img src="https://images.unsplash.com/photo-1587300003388-59208cc962cb?w=600&h=400&fit=crop" alt="Pets Store">
+                    <div class="portfolio-overlay">
+                        <a href="https://nzndfw-04.myshopify.com/" target="_blank"><i class="fas fa-external-link-alt"></i></a>
+                    </div>
+                </div>
+                <div class="portfolio-info">
+                    <p class="category">Pets</p>
+                    <h3>Pet Paradise</h3>
+                    <p>Complete pet supplies store</p>
+                    <span class="password"><i class="fas fa-lock"></i> Password: 2</span>
+                </div>
+            </div>
+        </div>
+        <footer>
+            <p>&copy; 2026 <a onclick="showPage('home')" style="cursor:pointer;">Ahsan</a>. All Rights Reserved. | Shopify Expert from Lahore, Pakistan</p>
+        </footer>
+    </div>
+
+    <!-- ==================== EXPERIENCE PAGE ==================== -->
+    <div id="experience" class="page">
+        <div class="section-title">
+            <h2>My <span>Experience</span></h2>
+            <p>Professional journey in Shopify development</p>
+        </div>
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <h3>2021 - Present</h3>
+                    <h4>Senior Shopify Expert</h4>
+                    <p>Leading Shopify store development, custom theme creation, and SEO optimization for clients worldwide. Completed 500+ successful projects with 5-star ratings.</p>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <h3>2020 - 2021</h3>
+                    <h4>Shopify Developer</h4>
+                    <p>Developed and customized Shopify themes, implemented advanced features using Liquid programming. Specialized in dropshipping store setups.</p>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <h3>2019 - 2020</h3>
+                    <h4>Web Developer</h4>
+                    <p>Started journey with HTML, CSS, and JavaScript. Built responsive websites and learned e-commerce fundamentals. Discovered passion for Shopify development.</p>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <h3>Key Achievements</h3>
+                    <h4>1000+ Projects Completed</h4>
+                    <p>Successfully delivered over 1000 Shopify projects with consistent 5-star ratings. Helped businesses generate millions in revenue through optimized stores.</p>
+                </div>
+            </div>
+        </div>
+        <footer>
+            <p>&copy; 2026 <a onclick="showPage('home')" style="cursor:pointer;">Ahsan</a>. All Rights Reserved. | Shopify Expert from Lahore, Pakistan</p>
+        </footer>
+    </div>
+
+    <!-- ==================== CONTACT PAGE ==================== -->
+    <div id="contact" class="page">
+        <div class="section-title">
+            <h2>Contact <span>Me</span></h2>
+            <p>Let's discuss your project and bring your vision to life</p>
+        </div>
+        <div class="contact-container">
+            <div class="contact-info">
+                <h3>Let's work <span>together</span></h3>
+                <p>Ready to build a high-converting Shopify store? I'm here to help you create a professional online presence that drives results. Let's turn your vision into reality!</p>
+                <div class="contact-details">
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div>
+                            <h4>Location</h4>
+                            <p>Lahore, Pakistan</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <div>
+                            <h4>Email</h4>
+                            <p>businessyt256@gmail.com</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fab fa-whatsapp"></i>
+                        <div>
+                            <h4>WhatsApp</h4>
+                            <p><a href="https://wa.me/923090516362" target="_blank">Message on WhatsApp</a></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="social-icons">
+                    <a href="https://www.linkedin.com" target="_blank" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+                    <a href="https://x.com" target="_blank" aria-label="Twitter / X"><i class="fa-brands fa-x-twitter"></i></a>
+                    <a href="https://www.instagram.com" target="_blank" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                </div>
+            </div>
+            <div class="contact-form">
+                <h3>Send a <span>Message</span></h3>
+                <form id="contactForm">
+                    <input type="text" placeholder="Your Name" required>
+                    <input type="email" placeholder="Your Email" required>
+                    <input type="text" placeholder="Subject" required>
+                    <textarea placeholder="Your Message" required></textarea>
+                    <button type="submit" class="btn btn-filled">Send Message</button>
+                </form>
+            </div>
+        </div>
+        <footer>
+            <p>&copy; 2026 <a onclick="showPage('home')" style="cursor:pointer;">Ahsan</a>. All Rights Reserved. | Shopify Expert from Lahore, Pakistan</p>
+        </footer>
+    </div>
+
+    <script>
+        // Auto-update footer year (e.g., 2026 now, and updates automatically every year)
+        function updateFooterYears() {
+            const year = new Date().getFullYear();
+            document.querySelectorAll('footer p').forEach(p => {
+                p.innerHTML = p.innerHTML.replace(/&copy;\s*\d{4}/g, `&copy; ${year}`);
+            });
+        }
+
+        // Page Navigation System
+        function showPage(pageId) {
+            // Hide all pages
+            document.querySelectorAll('.page').forEach(page => {
+                page.classList.remove('active');
+            });
+            
+            // Show selected page
+            document.getElementById(pageId).classList.add('active');
+            
+            // Update navigation active state
+            document.querySelectorAll('nav a, .mobile-menu a').forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('data-page') === pageId) {
+                    link.classList.add('active');
+                }
+            });
+            
+            // Scroll to top
+            window.scrollTo(0, 0);
+            
+            // Update URL hash
+            window.location.hash = pageId;
+
+            // Keep footer year always current
+            updateFooterYears();
+        }
+
+        // Mobile Menu Toggle
+        function toggleMenu() {
+            const mobileMenu = document.getElementById('mobileMenu');
+            mobileMenu.classList.toggle('active');
+        }
+
+        // Handle URL hash on page load
+        window.addEventListener('load', () => {
+            updateFooterYears();
+            const hash = window.location.hash.slice(1);
+            if (hash && document.getElementById(hash)) {
+                showPage(hash);
+            }
+        });
+
+        // Handle browser back/forward
+        window.addEventListener('hashchange', () => {
+            const hash = window.location.hash.slice(1);
+            if (hash && document.getElementById(hash)) {
+                showPage(hash);
+            }
+        });
+
+        // Portfolio Filter
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const portfolioItems = document.querySelectorAll('.portfolio-item');
+
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                filterBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+
+                const filter = btn.getAttribute('data-filter');
+
+                portfolioItems.forEach(item => {
+                    if (filter === 'all' || item.getAttribute('data-category') === filter) {
+                        item.classList.remove('hidden');
+                        item.style.animation = 'fadeIn 0.5s ease';
+                    } else {
+                        item.classList.add('hidden');
+                    }
+                });
+            });
+        });
+
+        // Form Submission
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Thank you for your message! I will get back to you soon.');
+            this.reset();
+        });
+
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', (e) => {
+            const mobileMenu = document.getElementById('mobileMenu');
+            const hamburger = document.querySelector('.hamburger');
+            
+            if (!mobileMenu.contains(e.target) && !hamburger.contains(e.target)) {
+                mobileMenu.classList.remove('active');
+            }
+        });
+
+        // ==================== TESTIMONIALS ====================
+        const TESTIMONIALS_STORAGE_KEY = 'ahsan_portfolio_testimonials_v1';
+
+        const dummyTestimonials = [
+            {
+                name: 'Sarah Khan',
+                brand: 'Luxe Jewelry',
+                rating: 5,
+                message: 'Ahsan delivered a premium Shopify store with clean design and fast loading. Communication was excellent and the final result was exactly what we wanted.',
+                tag: 'Theme + Speed'
+            },
+            {
+                name: 'Ahmed Raza',
+                brand: 'Urban Outfit PK',
+                rating: 4.5,
+                message: 'Very professional Shopify expert. He optimized our product pages and the conversion rate improved within the first week.',
+                tag: 'CRO'
+            },
+            {
+                name: 'Emily Roberts',
+                brand: 'Footzone',
+                rating: 5,
+                message: 'Amazing theme customization. Mobile experience is flawless and the store feels super premium.',
+                tag: 'Mobile Ready'
+            },
+            {
+                name: 'Bilal Hussain',
+                brand: 'FlashMart',
+                rating: 4,
+                message: 'Ahsan built a multi-product store structure that is easy to manage and looks great. Great attention to details.',
+                tag: 'Store Structure'
+            },
+            {
+                name: 'Jessica Wong',
+                brand: 'TechNest',
+                rating: 5,
+                message: 'Speed optimization was next level. Our Shopify store went from slow to lightning fast. Highly recommended.',
+                tag: 'Performance'
+            },
+            {
+                name: 'Hina Malik',
+                brand: 'Aaraa Fashion',
+                rating: 4.5,
+                message: 'Professional and very skilled in Liquid. He fixed issues others couldn’t and improved our SEO structure.',
+                tag: 'SEO + Liquid'
+            },
+            {
+                name: 'Omar Farooq',
+                brand: 'Moteca Bags',
+                rating: 4,
+                message: 'Store layout and branding looks premium now. Navigation and collections are clean and easy for customers.',
+                tag: 'Branding'
+            },
+            {
+                name: 'Noah Martinez',
+                brand: 'Scent Studio',
+                rating: 4.5,
+                message: 'Our fragrance store feels high-end. Ahsan improved product page design and implemented upsells the right way.',
+                tag: 'Product Pages'
+            },
+            {
+                name: 'Ayesha Siddiqui',
+                brand: 'Pet Paradise',
+                rating: 5,
+                message: 'Fast delivery and outstanding support. The store is responsive and easy to update. Great experience.',
+                tag: 'Support'
+            },
+            {
+                name: 'Daniel Kim',
+                brand: 'Belliza Gadgets',
+                rating: 3.5,
+                message: 'High quality work overall. Good communication and clean storefront. Minor revisions were handled quickly.',
+                tag: 'Store Build'
+            },
+            {
+                name: 'Fatima Noor',
+                brand: 'Rosyz',
+                rating: 5,
+                message: 'Ahsan understood our brand and delivered a beautiful storefront. Great SEO improvements too.',
+                tag: 'SEO'
+            }
+        ];
+
+        function escapeHtml(str) {
+            return String(str)
+                .replaceAll('&', '&amp;')
+                .replaceAll('<', '&lt;')
+                .replaceAll('>', '&gt;')
+                .replaceAll('"', '&quot;')
+                .replaceAll("'", '&#039;');
+        }
+
+        function initials(name) {
+            const parts = String(name).trim().split(/\s+/).slice(0, 2);
+            return parts.map(p => p[0]?.toUpperCase() || '').join('') || 'A';
+        }
+
+        function starsMarkup(rating) {
+            // supports halves: 4.5, 3.5, etc.
+            let r = Number(rating);
+            if (!Number.isFinite(r)) r = 5;
+            r = Math.max(1, Math.min(5, r));
+
+            const full = Math.floor(r);
+            const half = (r - full) >= 0.5 ? 1 : 0;
+            const empty = 5 - full - half;
+
+            const fullIcons = Array.from({ length: full }, () => '<i class="fa-solid fa-star"></i>').join('');
+            const halfIcons = half ? '<i class="fa-solid fa-star-half-stroke"></i>' : '';
+            const emptyIcons = Array.from({ length: empty }, () => '<i class="fa-regular fa-star"></i>').join('');
+
+            return `<span class="stars-icons" aria-hidden="true">${fullIcons}${halfIcons}${emptyIcons}</span><span class="t-rating-num">${r.toFixed(1)}</span>`;
+        }
+
+        function formatDate(ts) {
+            try {
+                const d = new Date(ts);
+                return d.toLocaleDateString(undefined, { year: 'numeric', month: 'short', day: '2-digit' });
+            } catch {
+                return '';
+            }
+        }
+
+        function loadUserTestimonials() {
+            try {
+                const raw = localStorage.getItem(TESTIMONIALS_STORAGE_KEY);
+                const parsed = raw ? JSON.parse(raw) : [];
+                return Array.isArray(parsed) ? parsed : [];
+            } catch {
+                return [];
+            }
+        }
+
+        function saveUserTestimonials(list) {
+            localStorage.setItem(TESTIMONIALS_STORAGE_KEY, JSON.stringify(list));
+        }
+
+        function renderTestimonials() {
+            const grid = document.getElementById('testimonialsGrid');
+            if (!grid) return;
+
+            const user = loadUserTestimonials();
+            const all = [...user, ...dummyTestimonials]; // user first so their review shows on top
+
+            grid.innerHTML = all.map(t => {
+                const name = escapeHtml(t.name);
+                const brand = escapeHtml(t.brand);
+                const msg = escapeHtml(t.message);
+                const tag = escapeHtml(t.tag || 'Client');
+                let rating = Number(t.rating);
+                if (!Number.isFinite(rating)) rating = 5;
+                rating = Math.max(1, Math.min(5, rating));
+                const date = t.date ? formatDate(t.date) : 'Verified';
+                return `
+                    <article class="testimonial-card">
+                        <div class="t-head">
+                            <div class="t-person">
+                                <div class="t-avatar">${escapeHtml(initials(t.name))}</div>
+                                <div style="min-width:0;">
+                                    <div class="t-name">${name}</div>
+                                    <div class="t-brand">${brand}</div>
+                                </div>
+                            </div>
+                            <div class="t-stars" title="${rating.toFixed(1)} out of 5">${starsMarkup(rating)}</div>
+                        </div>
+                        <p class="t-msg">“${msg}”</p>
+                        <div class="t-meta">
+                            <span class="t-chip"><i class="fas fa-badge-check"></i> ${tag}</span>
+                            <span>${escapeHtml(date)}</span>
+                        </div>
+                    </article>
+                `;
+            }).join('');
+        }
+
+        function openTestimonialModal() {
+            const modal = document.getElementById('testimonialModal');
+            if (!modal) return;
+            modal.classList.add('active');
+            modal.setAttribute('aria-hidden', 'false');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeTestimonialModal() {
+            const modal = document.getElementById('testimonialModal');
+            if (!modal) return;
+            modal.classList.remove('active');
+            modal.setAttribute('aria-hidden', 'true');
+            document.body.style.overflow = '';
+        }
+
+        // Initialize testimonial UI
+        window.addEventListener('load', () => {
+            renderTestimonials();
+
+            const openBtn = document.getElementById('openTestimonialModalBtn');
+            const closeBtn = document.getElementById('closeTestimonialModalBtn');
+            const cancelBtn = document.getElementById('cancelTestimonialBtn');
+            const modal = document.getElementById('testimonialModal');
+            const clearBtn = document.getElementById('clearMyTestimonialsBtn');
+            const form = document.getElementById('testimonialForm');
+
+            if (openBtn) openBtn.addEventListener('click', openTestimonialModal);
+            if (closeBtn) closeBtn.addEventListener('click', closeTestimonialModal);
+            if (cancelBtn) cancelBtn.addEventListener('click', closeTestimonialModal);
+
+            if (modal) {
+                modal.addEventListener('click', (e) => {
+                    const target = e.target;
+                    if (target && target.getAttribute && target.getAttribute('data-close') === 'true') {
+                        closeTestimonialModal();
+                    }
+                });
+            }
+
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape') closeTestimonialModal();
+            });
+
+            if (clearBtn) {
+                clearBtn.addEventListener('click', () => {
+                    localStorage.removeItem(TESTIMONIALS_STORAGE_KEY);
+                    renderTestimonials();
+                });
+            }
+
+            if (form) {
+                form.addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    const fd = new FormData(form);
+                    const name = String(fd.get('name') || '').trim();
+                    const brand = String(fd.get('brand') || '').trim();
+                    const rating = parseFloat(String(fd.get('rating') || 5));
+                    const message = String(fd.get('message') || '').trim();
+
+                    if (!name || !brand || !message) return;
+
+                    const newItem = {
+                        name,
+                        brand,
+                        rating: Math.max(1, Math.min(5, Number.isFinite(rating) ? rating : 5)),
+                        message,
+                        tag: 'New Review',
+                        date: Date.now()
+                    };
+
+                    const user = loadUserTestimonials();
+                    user.unshift(newItem);
+                    saveUserTestimonials(user);
+                    renderTestimonials();
+
+                    form.reset();
+                    closeTestimonialModal();
+                });
+            }
+        });
+
+        // Header scroll effect
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 100) {
+                header.style.background = 'rgba(10, 10, 10, 0.98)';
+                header.style.boxShadow = '0 5px 20px rgba(0, 0, 0, 0.3)';
+            } else {
+                header.style.background = 'rgba(10, 10, 10, 0.95)';
+                header.style.boxShadow = 'none';
+            }
+        });
+    </script>
+</body>
+</html>
